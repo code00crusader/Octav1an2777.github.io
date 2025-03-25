@@ -40,8 +40,8 @@
         }
         .img-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased size of images */
-            gap: 1.5rem; /* Increased gap */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
         .img-gallery img {
             width: 100%;
@@ -49,11 +49,10 @@
             object-fit: cover;
             border-radius: 0.5rem;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+            transition: transform 0.3s ease;
         }
         .img-gallery img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Added shadow on hover */
         }
         .modal {
             display: none;
@@ -69,8 +68,8 @@
         .modal-content {
             margin: auto;
             display: block;
-            width: 90%; /* Increased size of modal image */
-            max-width: 800px; /* Increased max-width */
+            width: 80%;
+            max-width: 700px;
             animation-name: zoom;
             animation-duration: 0.6s;
         }
@@ -80,10 +79,10 @@
         }
         .modal-close {
             position: absolute;
-            top: 20px; /* Adjusted position */
-            right: 20px; /* Adjusted position */
+            top: 15px;
+            right: 15px;
             color: #f1f1f1;
-            font-size: 50px; /* Increased size of close button */
+            font-size: 40px;
             font-weight: bold;
             transition: color 0.3s ease;
             cursor: pointer;
@@ -93,76 +92,11 @@
             color: #bbb;
             text-decoration: none;
         }
-        @media only screen and (max-width: 800px){ /* Adjusted media query */
+        @media only screen and (max-width: 700px){
             .modal-content {
                 width: 100%;
             }
-            .modal-close {
-                font-size: 40px; /* Adjusted close button size for smaller screens */
-                top: 10px;
-                right: 10px;
-            }
         }
-        /* Parallax effect styles */
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .parallax-content {
-            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for content */
-            padding: 4rem; /* Increased padding */
-            border-radius: 1rem;
-        }
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #1a202c;
-            color: #f7fafc;
-        }
-        .dark-mode h2,
-        .dark-mode h3,
-        .dark-mode .text-gray-800 {
-            color: #f7fafc;
-        }
-        .dark-mode .bg-white {
-            background-color: #2d3748;
-        }
-        .dark-mode .shadow-md {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
-        .dark-mode .bg-gray-100 {
-            background-color: #242424;
-        }
-        .dark-mode .text-gray-700{
-            color: #e2e8f0;
-        }
-        .dark-mode .border-gray-200{
-            border-color: #4a5568;
-        }
-        .dark-mode nav a{
-            color: #f7fafc;
-        }
-        .dark-mode nav a:hover{
-            color:#90caf9;
-        }
-        .dark-mode nav a.active{
-            color: #f59e0b;
-        }
-
-        .dark-mode .bg-purple-600 {
-            background-color: #6d28d9;
-        }
-        .dark-mode .hover\:bg-purple-700:hover {
-            background-color: #4c1d95;
-        }
-        .dark-mode .text-purple-600{
-            color: #8b5cf6;
-        }
-        .dark-mode .bg-yellow-500{
-            background-color: #d97706;
-        }
-
     </style>
 </head>
 <body class="bg-gray-100 font-inter">
@@ -171,9 +105,293 @@
             <a href="#" class="text-xl font-semibold text-gray-800">Gjirokastra</a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
-                    <li><a href="#reth-gjirokastres" class="hover:text-blue-600 transition duration-300 text-blue-600">Rreth Gjirokastrës</a></li>
-                    <li><a href="#historia" class="hover:text-purple-600 transition duration-300 text-gray-700">Historia</a></li>
-                    <li><a href="#atraksionet" class="hover:text-green-600 transition duration-300 text-gray-700">Atraksionet</a></li>
-                    <li><a href="#kultura-traditat" class="hover:text-yellow-500 transition duration-300 text-gray-700">Kultura & Traditat</a></li>
-                    <li><a href="#galeria" class="hover:text-pink-600 transition duration-300 text-gray-700">Galeria</a></li>
-                    <li><a href="#ngjarjet" class="hover:text-teal
+                    <li><a href="#reth-gjirokastres" class="hover:text-blue-600 transition duration-300">Rreth Gjirokastrës</a></li>
+                    <li><a href="#historia" class="hover:text-blue-600 transition duration-300">Historia</a></li>
+                    <li><a href="#atraksionet" class="hover:text-blue-600 transition duration-300">Atraksionet</a></li>
+                    <li><a href="#kultura-traditat" class="hover:text-blue-600 transition duration-300">Kultura & Traditat</a></li>
+                    <li><a href="#galeria" class="hover:text-blue-600 transition duration-300">Galeria</a></li>
+                    <li><a href="#ngjarjet" class="hover:text-blue-600 transition duration-300">Ngjarjet</a></li>
+                    <li><a href="#kontakt" class="hover:text-blue-600 transition duration-300">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-white w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-gray-700 focus:outline-none" aria-label="Close Menu">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#reth-gjirokastres" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Rreth Gjirokastrës</a></li>
+                    <li><a href="#historia" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Historia</a></li>
+                    <li><a href="#atraksionet" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Atraksionet</a></li>
+                    <li><a href="#kultura-traditat" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Kultura & Traditat</a></li>
+                    <li><a href="#galeria" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Galeria</a></li>
+                    <li><a href="#ngjarjet" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Ngjarjet</a></li>
+                    <li><a href="#kontakt" class="block text-lg text-gray-800 hover:text-blue-600 transition duration-300">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="reth-gjirokastres" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Rreth Gjirokastrës</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Gjirokastra&font=Montserrat" alt="Gjirokastra" class="rounded-lg shadow-md w-full">
+                </div>
+                <div class="md:w-1/2 text-gray-700">
+                    <p class="mb-4">
+                        Gjirokastra, e njohur ndryshe si Qyteti i Gurtë, është një qytet në Shqipërinë e Jugut, i rrethuar nga malet e Gjerë dhe i Shtatë.
+                        Njihet për arkitekturën e veçantë me shtëpi karakteristike prej guri, me çati të rëndë prej guri dhe fasada të bardha.
+                        Qyteti është pjesë e Trashëgimisë Botërore të UNESCO-s, duke e bërë një destinacion të rëndësishëm turistik.
+                    </p>
+                    <p class="mb-4">
+                        Gjirokastra ofron një panoramë të mrekullueshme të historisë dhe kulturës shqiptare.
+                        Kalaja e Gjirokastrës, qëndron krenare mbi qytet, duke ofruar pamje mahnitëse dhe duke ruajtur histori të shumta.
+                        Përveç kësaj, qyteti është i njohur për festivalet dhe ngjarjet kulturore që organizohen gjatë gjithë vitit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="historia" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Historia</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2 text-gray-700">
+                    <p class="mb-4">
+                        Historia e Gjirokastrës daton që nga shekulli i 4-t p.e.s., si një qendër e rëndësishme e fisit ilir të Kaonëve.
+                        Më vonë, qyteti u bë pjesë e Perandorisë Romake, Bizantine dhe Osmane, duke lënë gjurmë të thella në kulturën dhe arkitekturën e tij.
+                    </p>
+                    <p class="mb-4">
+                        Kalaja e Gjirokastrës, e ndërtuar fillimisht në shekullin e 12-të, ka parë shumë ndryshime dhe zgjerime gjatë shekujve.
+                        Ajo ka shërbyer si një qendër e rëndësishme ushtarake dhe administrative, dhe sot është një simbol i qëndresës dhe trashëgimisë së qytetit.
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Kalaja+e+Gjirokastres&font=Montserrat" alt="Kalaja e Gjirokastres" class="rounded-lg shadow-md w-full">
+                </div>
+            </div>
+        </section>
+
+        <section id="atraksionet" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Atraksionet</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Kalaja&font=Montserrat" alt="Kalaja" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Kalaja e Gjirokastrës</h3>
+                    <p class="text-gray-700">Një kala madhështore që ofron pamje panoramike të qytetit.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Muzeu+Etnografik&font=Montserrat" alt="Muzeu Etnografik" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Muzeu Etnografik</h3>
+                    <p class="text-gray-700">Prezantimi i traditave dhe kulturës lokale.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Shtëpia+e+Skëndulit&font=Montserrat" alt="Shtëpia e Skëndulit" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Shtëpia e Skëndulit</h3>
+                    <p class="text-gray-700">Një shembull i arkitekturës tradicionale të Gjirokastrës.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Xhamia+e+Pazarit&font=Montserrat" alt="Xhamia e Pazarit" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Xhamia e Pazarit</h3>
+                    <p class="text-gray-700">Një nga xhamitë historike të qytetit.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Pazari+i+Vjetër&font=Montserrat" alt="Pazari i Vjetër" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pazari i Vjetër</h3>
+                    <p class="text-gray-700">Tregu tradicional ku mund të gjeni produkte lokale dhe suvenire.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Tuneli+i+Luftës+së+Ftohtë&font=Montserrat" alt="Tuneli i Luftës së Ftohtë" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Tuneli i Luftës së Ftohtë</h3>
+                    <p class="text-gray-700">Një tunel nëntokësor që ofron një vështrim në historinë e Luftës së Ftohtë.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kultura-traditat" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Kultura & Traditat</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Festivali+Folklorik&font=Montserrat" alt="Festivali Folklorik" class="rounded-lg shadow-md w-full">
+                </div>
+                <div class="md:w-1/2 text-gray-700">
+                    <p class="mb-4">
+                        Gjirokastra është e njohur për traditat e saj të pasura kulturore, duke përfshirë muzikën, veshjet dhe festivalet.
+                        Festivali Folklorik Kombëtar, i cili zhvillohet çdo katër vjet, është një ngjarje e rëndësishme që tërheq artistë dhe vizitorë nga e gjithë Shqipëria dhe më gjerë.
+                    </p>
+                    <p class="mb-4">
+                        Qyteti gjithashtu krenohet me traditën e polifonisë, një stil unik i muzikës popullore shqiptare që është pjesë e Trashëgimisë Kulturore Jo-materiale të UNESCO-s.
+                        Vizitorët mund të shijojnë koncerte dhe shfaqje të muzikës polifonike në ambientet tradicionale të qytetit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Galeria</h2>
+            <div class="img-gallery" id="image-gallery">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra1&font=Montserrat" alt="Gjirokastra 1">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra2&font=Montserrat" alt="Gjirokastra 2">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra3&font=Montserrat" alt="Gjirokastra 3">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra4&font=Montserrat" alt="Gjirokastra 4">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra5&font=Montserrat" alt="Gjirokastra 5">
+                <img src="https://placehold.co/400x300/EEE/31343C?text=Gjirokastra6&font=Montserrat" alt="Gjirokastra 6">
+            </div>
+            <div id="image-modal" class="modal">
+                <span class="modal-close" id="modal-close">&times;</span>
+                <img class="modal-content" id="modal-img">
+            </div>
+        </section>
+
+        <section id="ngjarjet" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Ngjarjet</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Ngjarjet e Ardhshme</h3>
+                <ul class="list-disc list-inside text-gray-700">
+                    <li class="mb-2">Festivali Folklorik Kombëtar - Qershor 2024</li>
+                    <li class="mb-2">Dita e Çlirimit të Qytetit - Tetor 2024</li>
+                    <li class="mb-2">Panairi i Produkteve Lokale - Dhjetor 2024</li>
+                    </ul>
+            </div>
+        </section>
+
+        <section id="kontakt" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Kontakt</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-lg text-gray-700 mb-4">
+                    Për çdo pyetje ose informacion shtesë, ju lutem të na kontaktoni:
+                </p>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li><i class="fas fa-map-marker-alt mr-2"></i> Adresa: Rruga Gjirokastër, Albania</li>
+                    <li><i class="fas fa-phone mr-2"></i> Tel: +355 123 456 789</li>
+                    <li><i class="fas fa-envelope mr-2"></i> Email: info@gjirokastra.al</li>
+                    <li><a href="https://www.facebook.com/bashkiagjirokaster" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-300"><i class="fab fa-facebook mr-2"></i> Facebook</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-600 py-4 text-center">
+        <p>&copy; 2024 Gjirokastra - Qyteti i Gurtë. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Image gallery modal functionality
+        const gallery = document.getElementById('image-gallery');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalClose = document.getElementById('modal-close');
+
+        gallery.addEventListener('click', (event) => {
+            if (event.target.tagName === 'IMG') {
+                modal.style.display = "block";
+                modalImg.src = event.target.src;
+            }
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Function to check if an element is in the viewport
+        function isElementInView(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        // Add scroll event listener to handle animations and active navigation
+        window.addEventListener('scroll', () => {
+            // Reveal sections with fade-in and slide-in effects
+            sections.forEach(section => {
+                if (isElementInView(section)) {
+                    section.classList.remove('opacity-0', 'slide-in-left', 'slide-in-right', 'slide-in-bottom');
+                    section.classList.add('opacity-100');
+                    if (section.id === 'historia') {
+                        section.classList.add('slide-in-left');
+                    } else if (section.id === 'kultura-traditat') {
+                        section.classList.add('slide-in-right');
+                    } else {
+                        section.classList.add('slide-in-bottom');
+                    }
+                } else {
+                    section.classList.add('opacity-0', 'slide-in-bottom');
+                    if(section.id === 'historia'){
+                         section.classList.add('slide-in-left');
+                    }
+                    if(section.id === 'kultura-traditat'){
+                         section.classList.add('slide-in-right');
+                    }
+                }
+            });
+
+            // Update active navigation link
+            let currentSectionId = '';
+            sections.forEach(section => {
+                if (isElementInView(section)) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
